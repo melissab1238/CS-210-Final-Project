@@ -2,7 +2,7 @@ package ui;
 
 public class Community {
 
-    private String name;
+    public String name;
     private int members;
     private static String province;
     private String zipcode;
@@ -18,9 +18,9 @@ public class Community {
 
     }
 
-    public void birth(){
-        members++;
-        System.out.println("There was a birth.");
+    public int birth(){
+
+        return members++;
     }
 
     public void death(){
@@ -29,7 +29,7 @@ public class Community {
     }
 
     public void print(){
-        System.out.println(name + " has "+members+ " members and is located in "+province+ " with zipcode "+zipcode+".");
+        System.out.print(name + " has "+members+ " members and is located in "+province+ " with zipcode "+zipcode+".");
         System.out.println(name + " speaks the language of "+language +".");
         System.out.println();
 
