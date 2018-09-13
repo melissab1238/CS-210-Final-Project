@@ -52,6 +52,7 @@ public class Main {
             if(operation.equals("death")) {
                 mostRecent.death();
             }
+            //
             if (operation.equals("quit")) {
                 break;
             }
