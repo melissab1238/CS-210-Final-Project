@@ -15,23 +15,36 @@ public class Community {
         province = "BC";
         this.zipcode = zipcode;
         this.language = language;
-
     }
 
-    public int birth(){
 
-        return members++;
+
+    //Effect: number of members in community
+
+    //++ before members changes members and returns the new value
+    public void birth(){
+        int temp = ++members;
+        print("birth", temp);
+
     }
 
     public void death(){
-        members--;
-        System.out.println("There was a death.");
+        int temp = --members;
+        print("death", temp);
     }
 
+    //Effects: prints info about community
     public void print(){
-        System.out.print(name + " has "+members+ " members and is located in "+province+ " with zipcode "+zipcode+".");
+        System.out.print(name + " has "+members+ " members and is located in "+province+ " with zipcode "+zipcode+". ");
         System.out.println(name + " speaks the language of "+language +".");
         System.out.println();
 
+    }
+
+    //Effects: prints info about community
+    public void print(String lifeEvent, int i){
+        System.out.print("There was a "+lifeEvent+". ");
+        System.out.println("The new population of "+this.name+" is "+ i +". ");
+        System.out.println();
     }
 }

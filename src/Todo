@@ -4,3 +4,13 @@ add pictures of each community
 use musqueam online interactive map for inspiration
     - landmarks for a specific community - maybe tie in with FNEL 141 class! (do it about that community)
 add sounds/pronunciation of words
+
+birth and death methods are not working
+    probably because most recent is not working
+        maybe because most recent is creating a new object and not actually working on the original object
+    an idea is to show the list of communities already made and to pick one from the list and work on that one
+
+make birth and death abstraction in community
+
+make it if else
+use cons instead of if or "cases"
