@@ -14,3 +14,5 @@ make birth and death abstraction in community
 
 make it if else
 use cons instead of if or "cases"
+
+given valid zipcode, plot them on a map
