@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -11,6 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.ColorModel;
 
 
 public class Main extends Application {
@@ -29,10 +35,26 @@ public class Main extends Application {
         window = primaryStage;
         window.setTitle("Community Map");
 
-        AddCommunityInterface start = new AddCommunityInterface(window);
+        AddCommunity start = new AddCommunity(window);
 
         window.show();
+
+
+        //TODO
+        //attempt at setup (maybe make a superclass) - so
+        //make new class called "setUpGUI"
+        //and Menu extends setUpGUI and AddCommunity extends setUpGUI
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
+
+        Scene scene = new Scene(grid, 300, 200);
+        scene.getStylesheets().add("StyleSheet.css");
+        window.setScene(scene);
+
     }
+
 
 }
 

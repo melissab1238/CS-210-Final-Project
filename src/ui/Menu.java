@@ -1,5 +1,7 @@
 package ui;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import model.*;
 
 import javafx.geometry.Insets;
@@ -10,12 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class AddCommunityInterface {
+public class Menu {
 
-    Community newCommunity;
 
-    public AddCommunityInterface(Stage window){
-
+    public Menu (Stage window){
 
         //GridPane with 10px padding around edge
         GridPane grid = new GridPane();
@@ -24,7 +24,7 @@ public class AddCommunityInterface {
         grid.setHgap(10);
 
         //Name Label - constrains use (child, column, row)
-        Label nameLabel = new Label("Name:");
+        Label nameLabel = new Label("What do you want to do?");
         GridPane.setConstraints(nameLabel, 0, 0);
 
         //Name Input
@@ -61,14 +61,30 @@ public class AddCommunityInterface {
         //Submit Button
         Button loginButton = new Button("Submit");
         GridPane.setConstraints(loginButton, 1, 4);
-        // loginButton.setOnAction( e -> new CommunityMap());
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("You have clicked the button. ");
+            }
+        });
+
 
 
         //Add everything to grid
         grid.getChildren().addAll(nameLabel, nameInput, populationLabel, populationInput, zipcodeLabel, zipcodeInput, languageLabel, languageInput, loginButton);
 
+
+        //Integer.parseInt(populationInput.getText()
+        //newCommunity.print();
+
         Scene scene = new Scene(grid, 300, 200);
         scene.getStylesheets().add("StyleSheet.css");
         window.setScene(scene);
+
+
+
     }
+
 }
+
+
