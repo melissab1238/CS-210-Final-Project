@@ -5,17 +5,16 @@ import model.CommunityInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TestCommunity {
+class CommunityInterfaceTest {
 
     private String testName = "Test";
     private int population = 100;
     private static String province = "BC"; //remove?
     private String zipcode = "123 456";
     private String language = "English";
-
-    Community testCommunity;
+    CommunityInterface testCommunity; //declaring an Interface
 
     @BeforeEach
     public void runBefore(){
@@ -28,20 +27,6 @@ public class TestCommunity {
         testCommunity.changeName("Test2");
         assertEquals(testCommunity.getName(), "Test2");
     }
-
-    @Test
-    public void testBirth(){
-        testCommunity.birth();
-        assertEquals(testCommunity.getPopulation(), population+1 );
-    }
-
-    @Test
-    public void testDeath(){
-        testCommunity.death();
-        assertEquals(testCommunity.getPopulation(), population-1 );
-    }
-
-
 
 
 }

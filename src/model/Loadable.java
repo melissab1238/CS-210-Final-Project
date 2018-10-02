@@ -4,5 +4,5 @@ import java.io.IOException;
 
 public interface Loadable {
 
-    void loadFromFile() throws IOException;
+    void loadFromFile(String s) throws IOException;
 }
