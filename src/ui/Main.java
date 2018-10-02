@@ -1,5 +1,7 @@
 package ui;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
@@ -17,14 +19,16 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ColorModel;
+import java.io.IOException;
 
 
 public class Main extends Application {
     Stage window;
+    Scene scene;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-      launch(args);
+      //launch(args);
       CommunityMap map1 = new CommunityMap();
 
     }
@@ -35,7 +39,7 @@ public class Main extends Application {
         window = primaryStage;
         window.setTitle("Community Map");
 
-        AddCommunity start = new AddCommunity(window);
+        Menu start = new Menu(window);
 
         window.show();
 
@@ -44,14 +48,73 @@ public class Main extends Application {
         //attempt at setup (maybe make a superclass) - so
         //make new class called "setUpGUI"
         //and Menu extends setUpGUI and AddCommunity extends setUpGUI
+
+
+        //GridPane with 10px padding around edge
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
         grid.setHgap(10);
 
-        Scene scene = new Scene(grid, 300, 200);
+        //Name Label - constrains use (child, column, row)
+        Label nameLabel = new Label("Name");
+        GridPane.setConstraints(nameLabel, 0, 0);
+
+        //Name Input
+        TextField nameInput = new TextField("");
+        GridPane.setConstraints(nameInput, 1, 0);
+
+        //Population Label
+        Label populationLabel = new Label("Population:");
+        GridPane.setConstraints(populationLabel, 0, 1);
+
+        //Population Input
+        TextField populationInput = new TextField();
+        populationInput.setPromptText("");
+        GridPane.setConstraints(populationInput, 1, 1);
+
+        //Zipcode Label
+        Label zipcodeLabel = new Label("Zipcode:");
+        GridPane.setConstraints(zipcodeLabel, 0, 2);
+
+        //Zipcode Input
+        TextField zipcodeInput = new TextField();
+        zipcodeInput.setPromptText("");
+        GridPane.setConstraints(zipcodeInput, 1, 2);
+
+        //Language Label
+        Label languageLabel = new Label("Language:");
+        GridPane.setConstraints(languageLabel, 0, 3);
+
+        //Language Input
+        TextField languageInput = new TextField();
+        languageInput.setPromptText("");
+        GridPane.setConstraints(languageInput, 1, 3);
+
+        //Submit Button
+        Button loginButton = new Button("Submit");
+        GridPane.setConstraints(loginButton, 1, 4);
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("You have clicked the button. ");
+            }
+        });
+
+
+
+        //Add everything to grid
+        grid.getChildren().addAll(nameLabel, nameInput, populationLabel, populationInput, zipcodeLabel, zipcodeInput, languageLabel, languageInput, loginButton);
+
+
+        //Integer.parseInt(populationInput.getText()
+        //newCommunity.print();
+
+        scene = new Scene(grid, 300, 200);
         scene.getStylesheets().add("StyleSheet.css");
         window.setScene(scene);
+
+
 
     }
 
