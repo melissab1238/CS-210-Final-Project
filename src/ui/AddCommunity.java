@@ -68,12 +68,9 @@ public class AddCommunity {
             public void handle(ActionEvent event) {
                 newCommunity = new Community(nameInput.getText(), 123456, zipcodeInput.getText(), languageInput.getText());
                 newCommunity.print();
-
                 //TODO: from here, change interface to the main screen
             }
         });
-
-
 
         //Add everything to grid
         grid.getChildren().addAll(nameLabel, nameInput, populationLabel, populationInput, zipcodeLabel, zipcodeInput, languageLabel, languageInput, loginButton);
