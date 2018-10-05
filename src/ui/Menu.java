@@ -3,10 +3,12 @@ package ui;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import model.*;
 
 import javafx.application.Application;
@@ -15,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -40,21 +43,14 @@ public class Menu extends Application {
 
         window.show();
 
-
-        //TODO
-        //attempt at setup (maybe make a superclass) - so
-        //make new class called "setUpGUI"
-        //and Menu extends setUpGUI and AddCommunity extends setUpGUI
-
-
         //GridPane with 10px padding around edge
-        GridPane grid = new GridPane();
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(8);
-        grid.setHgap(10);
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(10,10,10,10));
+        vbox.setAlignment(Pos.CENTER);
+
+        Label introlabel = new Label("Melissa Bernstein's CPSC 210 project");
 
         Button pickCommunity = new Button("Pick Community");
-        GridPane.setConstraints(pickCommunity, 0, 0);
         pickCommunity.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -63,32 +59,22 @@ public class Menu extends Application {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
+            }//TODO change this to buckyroberts
         });
 
         Button addCommunity = new Button("Add a Community");
-        GridPane.setConstraints(addCommunity, 0, 1);
-        addCommunity.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                new AddCommunity(window);
-            }
-        });
+        addCommunity.setOnAction(e ->  new AddCommunity(window)); //todo: changed this
+
+        Button viewmap = new Button("View Map");
+        viewmap.setOnAction(e -> System.out.println("View Map is under construction"));
 
         Button loadFromFile = new Button("Load from File");
-        GridPane.setConstraints(loadFromFile, 0, 2);
-        loadFromFile.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("incomplete"); //TODO
-            }
-        });
+        loadFromFile.setOnAction(e -> System.out.println("Load from file is under construction"));
 
-        //Add everything to grid
-        grid.getChildren().addAll(pickCommunity, addCommunity, loadFromFile);
+        vbox.getChildren().addAll(introlabel, pickCommunity, addCommunity, viewmap,loadFromFile);
 
 
-        scene = new Scene(grid, 300, 200);
+        scene = new Scene(vbox, 300, 200);
         scene.getStylesheets().add("StyleSheet.css");
         window.setScene(scene);
 
