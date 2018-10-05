@@ -2,15 +2,11 @@ package tests;
 
 import model.Community;
 import model.CommunityMap;
-import model.Loadable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -42,7 +38,7 @@ public class TestCommunityMap {
         Community community1 = new Community("Sally", 1, "9ab", "English");
         Community community2 = new Community("Sam", 9, "abc", "Spanish");
 
-        testCommunityMap.loadFromFile("testFileInput.txt");
+        testCommunityMap.loadFromFile("inputfile.txt");
         assertEquals(testCommunityMap.getCommunities().get(0).getName(), community1.getName());
         assertEquals(testCommunityMap.getCommunities().get(1).getName(), community2.getName());
 

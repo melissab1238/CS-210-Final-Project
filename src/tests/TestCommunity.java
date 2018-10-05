@@ -1,7 +1,6 @@
 package tests;
 
 import model.Community;
-import model.CommunityInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

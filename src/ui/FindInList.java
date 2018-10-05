@@ -26,7 +26,7 @@ public class FindInList {
         grid.setHgap(10);
 
         ChoiceBox cb = new ChoiceBox(observableArrayList(
-                getNamesOfCommunities(new CommunityMap()))
+                getNamesOfCommunities(map))
         );
 
        grid.add(cb, 1, 0);
