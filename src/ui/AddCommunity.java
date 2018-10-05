@@ -16,9 +16,10 @@ public class AddCommunity {
 
     Community newCommunity;
 
+
     public AddCommunity(Stage window){
 
-
+        window.setTitle("Add a Community");
         //GridPane with 10px padding around edge
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
@@ -68,7 +69,8 @@ public class AddCommunity {
             public void handle(ActionEvent event) {
                 newCommunity = new Community(nameInput.getText(), 123456, zipcodeInput.getText(), languageInput.getText());
                 newCommunity.print();
-                //TODO: from here, change interface to the main screen
+                CommunityMap.communities.add(newCommunity);
+                Menu.display(window);
             }
         });
 

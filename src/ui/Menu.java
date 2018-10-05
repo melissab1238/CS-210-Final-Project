@@ -17,6 +17,10 @@ public class Menu{
 
     public static void display(Stage window){
 
+        window.setTitle("Menu");
+
+        //TODO: refactor this class
+        //TODO: maybe make a superclass for all of the button implementation stuff
         //GridPane with 10px padding around edge
         VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(20,10,20,10));
@@ -37,7 +41,13 @@ public class Menu{
         loadFromFile.setOnAction(e -> System.out.println("Load from file is under construction"));
 
         Button saveToFileButton = new Button("Save to File");
-        saveToFileButton.setOnAction(e -> System.out.println("Save to File is under construction"));
+        saveToFileButton.setOnAction(e -> {
+            try {
+                CommunityMap.saveToFile();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
         vbox.getChildren().addAll(introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
 
         Scene scene = new Scene(vbox, 300, 200);

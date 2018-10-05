@@ -43,6 +43,8 @@ public class TestCommunityMap {
         assertEquals(testCommunityMap.getCommunities().get(1).getName(), community2.getName());
 
     }
+
+
     @Test
     void splitOnSpace() {
         ArrayList<String> s = new ArrayList<>();

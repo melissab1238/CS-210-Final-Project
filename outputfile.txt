@@ -1,3 +1,1 @@
-Musqueam 1301 V6N 4C6 hən̓q̓əmin̓əm'
-Sally 1 9ab English
-Sam 9 abc Spanish
+M 123456 9 1

@@ -28,10 +28,12 @@ import model.*;
 
 public class Main extends Application{
     Stage window;
-    Scene scene;
+
+    static CommunityMap communityMap;
 
     public static void main(String[] args) throws IOException {
         //CommunityMap map1 = new CommunityMap();
+        communityMap = new CommunityMap();
         launch(args);
 
     }
@@ -39,13 +41,8 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        //window.setTitle("Menu");
-
         window.show();
-
         Menu.display(window);
-
-
     }
 
 
