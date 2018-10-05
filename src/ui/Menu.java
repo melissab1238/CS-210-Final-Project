@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class Menu{
 
+    //TODO: stackpanes?
     public static void display(Stage window){
 
         window.setTitle("Menu");
@@ -29,7 +30,14 @@ public class Menu{
         Label introLabel = new Label("Melissa Bernstein's CPSC 210 project");
 
         Button pickCommunity = new Button("Pick Community");
-        pickCommunity.setOnAction(e -> System.out.println("under construction... new CommunityMap()"));
+        pickCommunity.setOnAction(e -> {
+            try {
+                new FindInList().pickFromList(window);
+
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
 
         Button addCommunity = new Button("Add a Community");
         addCommunity.setOnAction(e ->  new AddCommunity(window)); //todo: changed this
@@ -38,7 +46,13 @@ public class Menu{
         viewmap.setOnAction(e -> System.out.println("View Map is under construction"));
 
         Button loadFromFile = new Button("Load from File");
-        loadFromFile.setOnAction(e -> System.out.println("Load from file is under construction"));
+        loadFromFile.setOnAction(e -> {
+            try {
+                CommunityMap.loadFromFile("inputfile.txt");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
 
         Button saveToFileButton = new Button("Save to File");
         saveToFileButton.setOnAction(e -> {

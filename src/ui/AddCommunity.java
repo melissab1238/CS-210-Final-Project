@@ -68,7 +68,7 @@ public class AddCommunity {
             @Override
             public void handle(ActionEvent event) {
                 newCommunity = new Community(nameInput.getText(), 123456, zipcodeInput.getText(), languageInput.getText());
-                newCommunity.print();
+                //newCommunity.print();
                 CommunityMap.communities.add(newCommunity);
                 Menu.display(window);
             }
