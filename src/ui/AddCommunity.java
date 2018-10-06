@@ -2,21 +2,23 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import model.*;
-
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.Community;
+import model.CommunityMap;
 
-public class AddCommunity {
+public class AddCommunity extends SceneLayout {
 
     Community newCommunity;
 
-
+    /**
+     * @param window
+     */
     public AddCommunity(Stage window){
 
         window.setTitle("Add a Community");
@@ -76,14 +78,13 @@ public class AddCommunity {
 
         //Add everything to grid
         grid.getChildren().addAll(nameLabel, nameInput, populationLabel, populationInput, zipcodeLabel, zipcodeInput, languageLabel, languageInput, loginButton);
+        grid.setAlignment(Pos.CENTER); //TODO: put into scene layout superclass
 
 
         //Integer.parseInt(populationInput.getText()
         //newCommunity.print();
 
-        Scene scene = new Scene(grid, 300, 200);
-        scene.getStylesheets().add("StyleSheet.css");
-        window.setScene(scene);
+        setScene(grid, window);
 
 
 

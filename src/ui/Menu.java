@@ -1,10 +1,7 @@
 package ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -64,9 +61,7 @@ public class Menu{
         });
         vbox.getChildren().addAll(introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
 
-        Scene scene = new Scene(vbox, 300, 200);
-        scene.getStylesheets().add("StyleSheet.css");
-        window.setScene(scene);
+        SceneLayout.setScene(vbox, window);
 
 
     }

@@ -2,11 +2,11 @@
     -fx-background-color: #8fbc8f;
 }
 .label{
-    -fx-text-fill: #e8e8e8;
+    -fx-text-fill: white;
 }
 .button{
-    -fx-background-color: pink;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #e8e8e8;
+    -fx-text-fill: black;
     -fx-background-radius: 4;
 }
 .button-blue{

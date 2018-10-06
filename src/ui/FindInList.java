@@ -1,27 +1,18 @@
 package ui;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import model.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.Community;
+import model.CommunityMap;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
-import static javafx.collections.FXCollections.observableArrayList;
-
-public class FindInList {
+public class FindInList extends SceneLayout { //find in list, then birth/death
 
     ComboBox<String> comboBox;
 
@@ -33,26 +24,29 @@ public class FindInList {
         comboBox.getItems().addAll(getNamesOfCommunities());
 
         Button birthButton  = new Button("Birth");
-        birthButton.setOnAction(e -> CommunityMap.communities.get(comboBox.getSelectionModel().getSelectedIndex()));//TODO stopped here
-       // System.out.println(comboBox.getSelectionModel().getSelectedIndex());
+        birthButton.setOnAction(e -> {
+            int i = comboBox.getSelectionModel().getSelectedIndex();
+            CommunityMap.communities.get(i).birth();
+            //TODO; decide if u want to force user to go directly back to Menu
+        });
 
         Button deathButton = new Button("Death");
-        deathButton.setOnAction(e -> System.out.println("death, work in progress")); //TODO: inc
+        deathButton.setOnAction(e -> {
+            int i = comboBox.getSelectionModel().getSelectedIndex();
+            CommunityMap.communities.get(i).death();
+        });
 
-        Button submitButton = new Button("Submit");
+        Button submitButton = new Button("Back to Menu");
         submitButton.setOnAction(e -> Menu.display(window)); //TODO: add birth, death, view in map
 
         HBox layout = new HBox(10);
         layout.setPadding(new Insets(20, 20, 20, 20));
-        layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(comboBox, birthButton, deathButton, submitButton);
 
-        Scene scene = new Scene(layout, 300, 200);
-        scene.getStylesheets().add("StyleSheet.css");
-        window.setScene(scene);
+        layout.setAlignment(Pos.CENTER);
+        setScene(layout, window);
 
     }
-
 
 
     private ArrayList<String> getNamesOfCommunities() {
@@ -64,18 +58,6 @@ public class FindInList {
         return list;
 
     }
-
-
-    private Object getNamesOfCommunities(CommunityMap map) {
-        ObservableList<String> list = observableArrayList();
-        for (int i = 0; i < map.getCommunities().size(); i++) {
-            list.add(map.getCommunities().get(0).getName());
-            System.out.println(map.getCommunities().get(0).getName());
-        }
-        return list;
-
-    }
-
 
 }
 
