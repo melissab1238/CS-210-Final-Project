@@ -6,8 +6,10 @@ import com.sun.xml.internal.ws.wsdl.writer.document.Documented;
 import com.sun.xml.internal.ws.wsdl.writer.document.Import;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CommunityMap;
@@ -15,9 +17,8 @@ import model.CommunityMap;
 import javax.xml.namespace.QName;
 import java.io.IOException;
 
-import static ui.SceneLayout.setScene;
 
-public class Menu{
+public class Menu extends SceneLayout{
 
     //TODO: stackpanes?
     public static void display(Stage window){
@@ -69,8 +70,19 @@ public class Menu{
         });
         vbox.getChildren().addAll(introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
 
-        setScene(vbox, window);
+        setScene(vbox, window); //overriden method from abstract class!!!!!!!!!!!!!!!!1
 
+
+    }
+
+    public static void setScene(Pane p, Stage window){ //why does everything need to be static?
+        //error: "non-static field HEIGHT can be referenced from a static context", so i am forced to make everything static
+        //TODO: but what does static even mean? ^^
+        Scene scene = new Scene(p, 500,500); //the part that is overriden!!!!!!!!!!!!!!
+        scene.getStylesheets().add("StyleSheet.css");
+        window.setScene(scene);
+        //TODO do something like setAlignment(p, Pos.CENTER); (for some reason you cant put in Pane for setAllignment
+        //  /.../because parameter is a node child)
 
     }
 }

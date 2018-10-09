@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -17,23 +18,31 @@ import java.util.ArrayList;
 
 public class FindInList extends SceneLayout { //find in list, then birth/death
 
-    ComboBox<String> comboBox;
+    public static ComboBox<String> comboBox;
 
-    public void pickFromList(Stage window) throws IOException {
+    public static void pickFromList(Stage window) throws IOException {
         System.out.println("You made it to find in list");
+
 
         window.setTitle("Find in List");
         comboBox = new ComboBox<>();
         comboBox.getItems().addAll(getNamesOfCommunities());
 
+        HBox hbox = new HBox(10);
+        hbox.setPadding(new Insets(20, 20, 20, 20));
+
+
         Button birthButton  = new Button("Birth");
         birthButton.setOnAction(e -> {
             try {
                 int i = comboBox.getSelectionModel().getSelectedIndex();
-                CommunityMap.communities.get(i);
+                if (i == -1)
+                    setScene(hbox, window);
+                else
+                    CommunityMap.communities.get(i).birth();
 
             } catch (Error e1){
-                System.out.println("error in birthbutton");
+                setScene(hbox, window);
             };
 
             //TODO: if no item is picked, error message -> option: display first name in the default box
@@ -52,21 +61,41 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
         Button submitButton = new Button("Back to Menu");
         submitButton.setOnAction(e -> Menu.display(window)); //TODO: add birth, death, view in map
 
-        HBox layout = new HBox(10);
-        layout.setPadding(new Insets(20, 20, 20, 20));
-        layout.getChildren().addAll(comboBox, birthButton, deathButton, submitButton);
+        hbox.getChildren().addAll(comboBox, birthButton, deathButton, submitButton);
 
-        layout.setAlignment(Pos.CENTER);
-        setScene(layout, window);
+        hbox.setAlignment(Pos.CENTER);
+        SceneLayout.setScene(hbox, window);
 
     }
 
+  //@Override
+  public static void setScene(Pane p, Stage window){ //why does everything need to be static?
 
-    private ArrayList<String> getNamesOfCommunities() throws IOException {
+        TextField textError = new TextField("ERROR");
+        Button esc = new Button("Exit");
+        esc.setOnAction(e -> {
+            try {
+                pickFromList(window);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+        HBox hbox = new HBox(10);
+        hbox.setPadding(new Insets(20, 20, 20, 20));
+        hbox.getChildren().addAll(textError, esc);
+
+        hbox.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(p, 100 , 100 );
+        scene.getStylesheets().add("StyleSheet.css");
+        window.setScene(scene);
+    }
+
+
+    private static ArrayList<String> getNamesOfCommunities() throws IOException {
         ArrayList<String> list = new ArrayList<>();
 
         if (CommunityMap.communities.isEmpty()) {
-            System.out.println("you made it to like 66");
             CommunityMap.loadFromFile("inputfile.txt");
         }
         for (Community c : CommunityMap.communities) {

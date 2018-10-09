@@ -20,8 +20,7 @@ public class TestCommunityMap {
     @BeforeEach
     public void runBefore() throws IOException {
         testCommunities = new ArrayList<>();
-        testCommunityMap = new CommunityMap("hello");
-    }
+       }
 
     @Test
     public void testRun(){

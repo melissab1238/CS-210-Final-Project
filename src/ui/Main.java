@@ -15,7 +15,7 @@ import java.util.ListIterator;
 public class Main extends Application{
     Stage window;
 
-    static CommunityMap communityMap;
+    public static CommunityMap communityMap;
 
 
     public static void main(String[] args) throws IOException {
