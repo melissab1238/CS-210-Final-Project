@@ -1,5 +1,9 @@
 package ui;
 
+import com.sun.xml.internal.txw2.Document;
+import com.sun.xml.internal.txw2.TypedXmlWriter;
+import com.sun.xml.internal.ws.wsdl.writer.document.Documented;
+import com.sun.xml.internal.ws.wsdl.writer.document.Import;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,7 +12,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CommunityMap;
 
+import javax.xml.namespace.QName;
 import java.io.IOException;
+
+import static ui.SceneLayout.setScene;
 
 public class Menu{
 
@@ -49,6 +56,7 @@ public class Menu{
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+
         });
 
         Button saveToFileButton = new Button("Save to File");
@@ -61,7 +69,7 @@ public class Menu{
         });
         vbox.getChildren().addAll(introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
 
-        SceneLayout.setScene(vbox, window);
+        setScene(vbox, window);
 
 
     }

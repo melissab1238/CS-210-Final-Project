@@ -15,14 +15,14 @@ public abstract class SceneLayout { //TODO: what is the purpose of an abstract c
     static void setScene(Pane p, Stage window){ //why does everything need to be static?
         //error: "non-static field HEIGHT can be referenced from a static context", so i am forced to make everything static
         //TODO: but what does static even mean? ^^
-        //TODO: setAlignment(Pos.CENTER);
         Scene scene = new Scene(p, WIDTH, HEIGHT );
         scene.getStylesheets().add("StyleSheet.css");
         window.setScene(scene);
-
-
+        //TODO do something like setAlignment(p, Pos.CENTER); (for some reason you cant put in Pane for setAllignment
+        //  /.../because parameter is a node child)
 
     }
+
 }
 
 

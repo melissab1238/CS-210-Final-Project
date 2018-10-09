@@ -1,10 +1,13 @@
 package ui;
 
+import com.sun.javaws.jnl.JavaFXAppDesc;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Community;
 import model.CommunityMap;
@@ -25,9 +28,19 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
 
         Button birthButton  = new Button("Birth");
         birthButton.setOnAction(e -> {
-            int i = comboBox.getSelectionModel().getSelectedIndex();
-            CommunityMap.communities.get(i).birth();
+            try {
+                int i = comboBox.getSelectionModel().getSelectedIndex();
+                CommunityMap.communities.get(i);
+
+            } catch (Error e1){
+                System.out.println("error in birthbutton");
+            };
+
+            //TODO: if no item is picked, error message -> option: display first name in the default box
             //TODO; decide if u want to force user to go directly back to Menu
+            //TODO: once file is loaded, you cannot upload from that same file
+            //TODO: import file from computer
+            //TODO: translator umista to napa (separate project or integrate this one)
         });
 
         Button deathButton = new Button("Death");
@@ -49,15 +62,21 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
     }
 
 
-    private ArrayList<String> getNamesOfCommunities() {
+    private ArrayList<String> getNamesOfCommunities() throws IOException {
         ArrayList<String> list = new ArrayList<>();
-        for (Community c: CommunityMap.communities
-             ) {
+
+        if (CommunityMap.communities.isEmpty()) {
+            System.out.println("you made it to like 66");
+            CommunityMap.loadFromFile("inputfile.txt");
+        }
+        for (Community c : CommunityMap.communities) {
             list.add(c.getName());
         }
         return list;
 
     }
+
+
 
 }
 

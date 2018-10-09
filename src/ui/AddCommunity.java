@@ -16,14 +16,12 @@ public class AddCommunity extends SceneLayout {
 
     Community newCommunity;
 
-    /**
-     * @param window
-     */
     public AddCommunity(Stage window){
 
         window.setTitle("Add a Community");
         //GridPane with 10px padding around edge
         GridPane grid = new GridPane();
+
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
         grid.setHgap(10);
