@@ -74,4 +74,15 @@ public class TestCommunityMap {
     }
 
 
+    @Test
+    void testprint() {
+    }
+
+    @Test
+    void testloadFromFile() {
+    }
+
+    @Test
+    void testgetCommunities() {
+    }
 }

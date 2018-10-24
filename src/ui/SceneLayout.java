@@ -5,9 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import static javafx.scene.layout.BorderPane.setAlignment;
-
-
 public abstract class SceneLayout {
     protected static final int WIDTH = 500;
     protected static final int HEIGHT = 400;

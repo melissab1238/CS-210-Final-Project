@@ -2,15 +2,9 @@ package ui;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.Community;
 import model.CommunityMap;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
 
 public class Main extends Application{
     Stage window;

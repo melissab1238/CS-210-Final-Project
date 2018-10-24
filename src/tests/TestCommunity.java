@@ -1,5 +1,6 @@
 package tests;
 
+import exceptions.ZeroPopulationError;
 import model.Community;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,7 @@ public class TestCommunity {
     }
 
     @Test
-    public void testDeath(){
+    public void testDeath() throws ZeroPopulationError {
         testCommunity.death();
         assertEquals(testCommunity.getPopulation(), population-1 );
     }

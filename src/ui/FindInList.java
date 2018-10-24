@@ -1,6 +1,7 @@
 package ui;
 
 import com.sun.javaws.jnl.JavaFXAppDesc;
+import exceptions.ZeroPopulationError;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,14 +24,12 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
     public static void pickFromList(Stage window) throws IOException {
         System.out.println("You made it to find in list");
 
-
         window.setTitle("Find in List");
         comboBox = new ComboBox<>();
         comboBox.getItems().addAll(getNamesOfCommunities());
 
         HBox hbox = new HBox(10);
         hbox.setPadding(new Insets(20, 20, 20, 20));
-
 
         Button birthButton  = new Button("Birth");
         birthButton.setOnAction(e -> {
@@ -42,7 +41,7 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
                     CommunityMap.communities.get(i).birth();
 
             } catch (Error e1){
-                setScene(hbox, window);
+                setScene(hbox, window); //TODO 10/12 fix this!
             };
 
             //TODO: if no item is picked, error message -> option: display first name in the default box
@@ -55,7 +54,11 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
         Button deathButton = new Button("Death");
         deathButton.setOnAction(e -> {
             int i = comboBox.getSelectionModel().getSelectedIndex();
-            CommunityMap.communities.get(i).death();
+            try {
+                CommunityMap.communities.get(i).death();
+            } catch (ZeroPopulationError zeroPopulationError) {
+                System.out.println("Error: Community cannot have a negative population.");;
+            }
         });
 
         Button submitButton = new Button("Back to Menu");
@@ -68,8 +71,7 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
 
     }
 
-  //@Override
-  public static void setScene(Pane p, Stage window){ //why does everything need to be static?
+    public static void setScene(Pane p, Stage window){
 
         TextField textError = new TextField("ERROR");
         Button esc = new Button("Exit");
@@ -77,7 +79,7 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
             try {
                 pickFromList(window);
             } catch (IOException e1) {
-                e1.printStackTrace();
+                System.out.println("IOException error thrown.");;
             }
         });
         HBox hbox = new HBox(10);
