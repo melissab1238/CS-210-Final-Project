@@ -17,6 +17,8 @@ import model.CommunityMap;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static model.CommunityMap.communities;
+
 public class FindInList extends SceneLayout { //find in list, then birth/death
 
     public static ComboBox<String> comboBox;
@@ -27,6 +29,7 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
         window.setTitle("Find in List");
         comboBox = new ComboBox<>();
         comboBox.getItems().addAll(getNamesOfCommunities());
+        //10/27 comboBox.setPlaceholder(getNamesOfCommunities().get(0) or something like that
 
         HBox hbox = new HBox(10);
         hbox.setPadding(new Insets(20, 20, 20, 20));
@@ -38,26 +41,34 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
                 if (i == -1)
                     setScene(hbox, window);
                 else
-                    CommunityMap.communities.get(i).birth();
+                    communities.get(i).birth();
 
             } catch (Error e1){
                 setScene(hbox, window); //TODO 10/12 fix this!
-            };
+            } catch (Throwable otherError){
+                    System.out.println("Birth. The population has been changed -1.");
+                }
+            ;
+
 
             //TODO: if no item is picked, error message -> option: display first name in the default box
+                //10/27: how do you force users to pick a name?
+                //10/27: can u set a default for getselection model?
             //TODO; decide if u want to force user to go directly back to Menu
             //TODO: once file is loaded, you cannot upload from that same file
             //TODO: import file from computer
-            //TODO: translator umista to napa (separate project or integrate this one)
+
         });
 
         Button deathButton = new Button("Death");
         deathButton.setOnAction(e -> {
-            int i = comboBox.getSelectionModel().getSelectedIndex();
+            int i = comboBox.getSelectionModel().getSelectedIndex(); //todo: fix this 11/3 and for birth too
             try {
-                CommunityMap.communities.get(i).death();
+                communities.get(i).death();
             } catch (ZeroPopulationError zeroPopulationError) {
                 System.out.println("Error: Community cannot have a negative population.");;
+            } catch (Throwable otherError){
+                System.out.println("Death. The population has been changed -1.");
             }
         });
 
@@ -97,11 +108,16 @@ public class FindInList extends SceneLayout { //find in list, then birth/death
     private static ArrayList<String> getNamesOfCommunities() throws IOException {
         ArrayList<String> list = new ArrayList<>();
 
-        if (CommunityMap.communities.isEmpty()) {
+        if (communities.isEmpty()) {
             CommunityMap.loadFromFile("inputfile.txt");
         }
-        for (Community c : CommunityMap.communities) {
+        /*
+        for (Community c : communities) {
             list.add(c.getName());
+        }*/
+        for (Community c : communities.values()) {
+            list.add(c.getName());
+
         }
         return list;
 

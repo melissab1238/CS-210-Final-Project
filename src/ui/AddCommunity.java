@@ -12,9 +12,13 @@ import javafx.stage.Stage;
 import model.Community;
 import model.CommunityMap;
 
+import static model.CommunityMap.communities;
+
 public class AddCommunity extends SceneLayout {
 
+
     Community newCommunity;
+    //TODO(advice from TA): 10/23 add special exception errors for input to each of the TextField inputs (string, vs int), etc
 
     public AddCommunity(Stage window){
 
@@ -61,7 +65,15 @@ public class AddCommunity extends SceneLayout {
             public void handle(ActionEvent event) {
                 newCommunity = new Community(nameInput.getText(), 123456, zipcodeInput.getText(), languageInput.getText());
                 //newCommunity.print();
-                CommunityMap.communities.add(newCommunity);
+                for (Community c : communities.values()) {
+                    if(newCommunity.equals(c)){
+                        System.out.println("Community already exists. Try again with a different name.");
+                        break;
+                    }
+                    else
+                        CommunityMap.communities.put(nameInput.getText(), newCommunity);
+                }
+
                 Menu.display(window);
             }
         });

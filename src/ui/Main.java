@@ -1,12 +1,29 @@
 package ui;
 
 import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.CommunityMap;
 
+import javax.imageio.ImageIO;
+import javax.swing.text.Element;
+import javax.swing.text.html.ImageView;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Main extends Application{
+
     Stage window;
 
     public static CommunityMap communityMap;
@@ -15,21 +32,14 @@ public class Main extends Application{
     public static void main(String[] args) throws IOException {
         //CommunityMap map1 = new CommunityMap();
         communityMap = new CommunityMap();
-
         launch(args);
-
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-
         Menu.display(window);
         window.show();
     }
-
-
 }
-
-//source: https://github.com/buckyroberts/Source-Code-from-Tutorials/blob/master/JavaFX/000_template/Main.java
 

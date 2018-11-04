@@ -59,8 +59,8 @@ public class TestCommunityMap {
         Community community1 = new Community("Sally", 1, "9ab", "English");
         Community community2 = new Community("Sam", 9, "abc", "Spanish");
 
-        testCommunityMap.getCommunities().add(community1);
-        testCommunityMap.getCommunities().add(community2);
+        testCommunityMap.getCommunities().put("Sally", community1);
+        testCommunityMap.getCommunities().put("Sam", community2);
 
         testCommunityMap.saveToFile();
         testLoadFromFile();

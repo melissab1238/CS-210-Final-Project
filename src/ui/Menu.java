@@ -15,11 +15,13 @@ import javafx.stage.Stage;
 import model.CommunityMap;
 
 import javax.xml.namespace.QName;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
 public class Menu extends SceneLayout{
 
+    //TODO P8 practice reflexive relationships because u (probs) didnt get credit for it for the lab submission :(
     //TODO: stackpanes?
     public static void display(Stage window){
 
@@ -48,7 +50,13 @@ public class Menu extends SceneLayout{
         addCommunity.setOnAction(e ->  new AddCommunity(window));
 
         Button viewmap = new Button("View Map");
-        viewmap.setOnAction(e -> System.out.println("View Map is under construction"));
+        viewmap.setOnAction(e -> {
+            try {
+                new MapCommunity().display(window);
+            } catch (FileNotFoundException e1) {
+                System.out.println("File not found");
+            }
+        });
 
         Button loadFromFile = new Button("Load from File");
         loadFromFile.setOnAction(e -> {
