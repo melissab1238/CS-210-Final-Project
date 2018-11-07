@@ -23,3 +23,11 @@ add search
         //attempt at setup (maybe make a superclass) - so
         //make new class called "setUpGUI"
         //and Menu extends setUpGUI and AddCommunity extends setUpGUI
+
+//10/27: how do you force users to pick a name?
+                //10/27: can u set a default for getselection model?
+            //TODO: once file is loaded, you cannot upload from that same file
+//TODO(advice from TA): 10/23 add special exception errors for input to each of the TextField inputs (string, vs int), etc
+
+    //TODO P8 practice reflexive relationships because u (probs) didnt get credit for it for the lab submission :(
+    //TODO: stackpanes?
