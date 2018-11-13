@@ -8,10 +8,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CommunityMap;
+import model.ReadWebPageEx;
 
-//P9deliverables discussion on low cohesion: some classes (add community, find in list, map community) might share
-//      similar Buttons like "Back to menu", but because the classes are quite specialized, this might not be necessary
-
+import java.io.IOException;
 
 
 public class Menu{
@@ -22,6 +21,15 @@ public class Menu{
         VBox vbox = new VBox(10);
         setupVbox(vbox);
 
+        //p10deliverables
+        Label p10Delivarble = new Label("");
+        ReadWebPageEx wp = new ReadWebPageEx();
+        try {
+            StringBuilder sb = wp.titleReturn();
+            p10Delivarble.setText(sb.toString());
+        } catch (IOException e) {
+            System.out.println("Web Page not found.");
+        }
         Label introLabel = new Label("Melissa Bernstein's CPSC 210 project");
 
         //P9deliverables: increasing cohesion by using small lambda functions
@@ -47,7 +55,9 @@ public class Menu{
         saveToFileButton.setOnAction(e -> {
                 CommunityMap.saveToFile();
         });
-        vbox.getChildren().addAll(introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
+
+        //p10deliverables (p10deliverable)
+        vbox.getChildren().addAll(p10Delivarble, introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
 
         vbox.setAlignment(Pos.CENTER);
         SceneLayout.setScene(vbox, window);
