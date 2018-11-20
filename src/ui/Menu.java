@@ -22,11 +22,11 @@ public class Menu{
         setupVbox(vbox);
 
         //p10deliverables
-        Label p10Delivarble = new Label("");
+        Label p10Deliverable = new Label("");
         ReadWebPageEx wp = new ReadWebPageEx();
         try {
             StringBuilder sb = wp.titleReturn();
-            p10Delivarble.setText(sb.toString());
+            p10Deliverable.setText(sb.toString());
         } catch (IOException e) {
             System.out.println("Web Page not found.");
         }
@@ -57,7 +57,7 @@ public class Menu{
         });
 
         //p10deliverables (p10deliverable)
-        vbox.getChildren().addAll(p10Delivarble, introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
+        vbox.getChildren().addAll(p10Deliverable, introLabel, pickCommunity, addCommunity, viewmap,loadFromFile, saveToFileButton);
 
         vbox.setAlignment(Pos.CENTER);
         SceneLayout.setScene(vbox, window);

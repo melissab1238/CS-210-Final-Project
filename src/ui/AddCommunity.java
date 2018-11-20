@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Community;
+import model.CommunityMap;
 
 import static model.CommunityMap.communities;
 
@@ -50,6 +51,7 @@ public class AddCommunity {
 
         Button submitButton = new Button("Submit");
         GridPane.setConstraints(submitButton, 1, 4);
+
         submitButton.setOnAction(e -> {
             newCommunity = new Community(nameInput.getText(), Integer.parseInt(populationInput.getText()), zipcodeInput.getText(), languageInput.getText());
 
@@ -59,11 +61,18 @@ public class AddCommunity {
             }
             else{
                 communities.put(nameInput.getText(), newCommunity);
+
                 Menu.display(window);
             }
         });
 
-        grid.getChildren().addAll(nameLabel, nameInput, populationLabel, populationInput, zipcodeLabel, zipcodeInput, languageLabel, languageInput, submitButton);
+        Button backButton = new Button("Back");
+        GridPane.setConstraints(backButton, 1, 5);
+        backButton.setOnAction(e -> {
+            Menu.display(window);
+        });
+
+        grid.getChildren().addAll(nameLabel, nameInput, populationLabel, populationInput, zipcodeLabel, zipcodeInput, languageLabel, languageInput, submitButton, backButton);
         grid.setAlignment(Pos.CENTER); //TODO: put into scene layout superclass
 
         SceneLayout.setScene(grid, window);

@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 //P9deliverables while many of the classes in ui extend SceneLayout, it is not "IS-A" relationship but there is enough similarities
 //         between the classes that it made sense to make SceneLayout to reduce *coupling*
 public abstract class SceneLayout {
-    protected static final int WIDTH = 500;
-    protected static final int HEIGHT = 400;
+    protected static final int WIDTH = 900/2;
+    protected static final int HEIGHT = 843/2;
 
     public static void setScene(Pane p, Stage window){ //why does everything need to be static?
         Scene scene = new Scene(p, WIDTH, HEIGHT );

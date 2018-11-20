@@ -31,3 +31,11 @@ add search
 
     //TODO P8 practice reflexive relationships because u (probs) didnt get credit for it for the lab submission :(
     //TODO: stackpanes?
+
+//11/14:
+- JSON parsing
+- XML parsing
+- CSS
+- safe delete of composite, observer (p10 deliveables)
+    - turn my observer class -> java's observer's system
+- implement singleton design pattern with the 1 static communitymap that I use
