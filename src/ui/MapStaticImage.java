@@ -1,10 +1,13 @@
 package ui;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -12,30 +15,41 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class MapCommunity{
+public class MapStaticImage {
+
+    private Stage currentWindow;
 
     public void display(Stage window){
-        window.setTitle("Map Commmunity");
-        final WebView browser = new WebView();
-        final WebEngine webEngine = browser.getEngine();
-        webEngine.load("https://native-land.ca/api/embed/embed.html?maps=languages&name=kwakwala");
+        currentWindow = window;
+        window.setTitle("Language Map");
 
-        Hyperlink backhpl = new Hyperlink("Back");
-        backhpl.setOnAction(e -> {
-            Menu.display(window);
+        HBox box = new HBox();
+        imageSetUp(box);
+
+        AnchorPane anchorPane = new AnchorPane();
+        Button buttonBack = new Button("Back");
+        buttonBack.setOnAction(e -> {
+            Menu.display(currentWindow);
         });
 
+        AnchorPane.setTopAnchor(buttonBack, 10.0 );
+        AnchorPane.setRightAnchor(buttonBack, 10.0);
+        anchorPane.getChildren().addAll(buttonBack);
+
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().addAll(box, anchorPane);
+
         HBox root = new HBox();
-        root.getChildren().addAll(browser, backhpl);
+        root.getChildren().add(stackPane);
         SceneLayout.setScene(root, window);
-        }
+    }
 
     private void imageSetUp(Pane p){
         Image image = null;
 
         try {
-           image = new Image(new FileInputStream("KwakMap.jpg"));
-        //    image = new Image(new FileInputStream("KwakMap.svg"));
+            image = new Image(new FileInputStream("KwakMap.jpg"));
+            //    image = new Image(new FileInputStream("KwakMap.svg"));
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }

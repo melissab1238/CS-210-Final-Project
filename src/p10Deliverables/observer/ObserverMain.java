@@ -15,18 +15,13 @@ public class ObserverMain {
         Community community1 = new Community("Community 1", 100, "123456", "English");
         Community community2 = new Community("Community 2", 200, "654321", "English");
 
-
         communityMap.addObserver(paul);
         communityMap.addObserver(elisa);
         communityMap.addObserver(trey);
-
 
         System.out.println("Welcome to " + communityMap.getCommunities() + "\n");
         communityMap.addCommunities(community1);
         System.out.println();
         communityMap.addCommunities(community2);
-
     }
-
-
 }

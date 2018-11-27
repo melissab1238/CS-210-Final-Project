@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Community;
-import model.CommunityMap;
 
 import static model.CommunityMap.communities;
 
@@ -25,7 +24,6 @@ public class AddCommunity {
         grid.setVgap(8);
         grid.setHgap(10);
 
-
         Label nameLabel = new Label("Name:");
         GridPane.setConstraints(nameLabel, 0, 0);
 
@@ -37,7 +35,6 @@ public class AddCommunity {
 
         Label languageLabel = new Label("Language:");
         GridPane.setConstraints(languageLabel, 0, 3);
-
 
         TextField nameInput = new TextField("");
         GridPane.setConstraints(nameInput, 1, 0);

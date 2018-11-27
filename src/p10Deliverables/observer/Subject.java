@@ -9,7 +9,6 @@ public class Subject extends Throwable {
 
     public Subject(){
       observerList = new ArrayList<>();
-
     }
 
     public void addObserver(Observer observer){

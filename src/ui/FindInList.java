@@ -7,7 +7,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.CommunityMap;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static model.CommunityMap.communities;
@@ -27,9 +26,7 @@ public class FindInList {
         Button birthButton  = new Button("Birth");
         birthButton.setOnAction(e ->{
             changePopulation("birth");
-                }
-
-        );
+        });
 
         Button deathButton = new Button("Death");
         deathButton.setOnAction(e -> {

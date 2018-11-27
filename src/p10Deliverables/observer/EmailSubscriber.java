@@ -7,8 +7,6 @@ public class EmailSubscriber implements Observer {
         this.name = name;
     }
 
-
-
     public String getName() {
         return name;
     }

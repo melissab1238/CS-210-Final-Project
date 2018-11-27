@@ -40,7 +40,6 @@ public class TestCommunityMap {
         testCommunityMap.loadFromFile("inputfile.txt");
         assertEquals(testCommunityMap.getCommunities().get(0).getName(), community1.getName());
         assertEquals(testCommunityMap.getCommunities().get(1).getName(), community2.getName());
-
     }
 
 

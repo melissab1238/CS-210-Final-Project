@@ -1,28 +1,14 @@
-make UI - use swing/jframe or javafx
+DONE make UI - use swing/jframe or javafx
 import first nations bc data (i/o?) data integration
 add pictures of each community
 use musqueam online interactive map for inspiration
     - landmarks for a specific community - maybe tie in with FNEL 141 class! (do it about that community)
 add sounds/pronunciation of words
 
-birth and death methods are not working
-    probably because most recent is not working
-        maybe because most recent is creating a new object and not actually working on the original object
-    an idea is to show the list of communities already made and to pick one from the list and work on that one
-
-make birth and death abstraction in community
-
-make it if else
-use cons instead of if or "cases"
-
 given valid zipcode, plot them on a map
 
 add search
 
-    //TODO 9/26/18
-        //attempt at setup (maybe make a superclass) - so
-        //make new class called "setUpGUI"
-        //and Menu extends setUpGUI and AddCommunity extends setUpGUI
 
 //10/27: how do you force users to pick a name?
                 //10/27: can u set a default for getselection model?
