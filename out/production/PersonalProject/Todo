@@ -1,0 +1,27 @@
+DONE make UI - use swing/jframe or javafx
+import first nations bc data (i/o?) data integration
+add pictures of each community
+use musqueam online interactive map for inspiration
+    - landmarks for a specific community - maybe tie in with FNEL 141 class! (do it about that community)
+add sounds/pronunciation of words
+
+given valid zipcode, plot them on a map
+
+add search
+
+
+//10/27: how do you force users to pick a name?
+                //10/27: can u set a default for getselection model?
+            //TODO: once file is loaded, you cannot upload from that same file
+//TODO(advice from TA): 10/23 add special exception errors for input to each of the TextField inputs (string, vs int), etc
+
+    //TODO P8 practice reflexive relationships because u (probs) didnt get credit for it for the lab submission :(
+    //TODO: stackpanes?
+
+//11/14:
+- JSON parsing
+- XML parsing
+- CSS
+- safe delete of composite, observer (p10 deliveables)
+    - turn my observer class -> java's observer's system
+- implement singleton design pattern with the 1 static communitymap that I use

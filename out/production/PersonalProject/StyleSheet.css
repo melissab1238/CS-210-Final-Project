@@ -1,0 +1,28 @@
+.root{
+    -fx-background-color: grey;
+}
+.label{
+    -fx-text-fill: white;
+}
+.button{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-background-radius: 4;
+}
+.button-blue{
+    -fx-background-color: blue;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4;
+}
+#bold-label{
+    -fx-font-weight: bold;
+}
+.kwak-button-test{
+    -icon-paint: red;
+    -fx-background-color: -icon-paint;
+    -size: 24;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+}

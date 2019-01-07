@@ -1,0 +1,7 @@
+language
+dialect
+tribe - 4 tribes
+communities/towns/cities
+langauge boundaries
+
+language -> dialect -> band of tribes (if applicable) -> community (city)
